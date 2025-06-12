@@ -1,2 +1,19 @@
 # Reuma_2.0
-Reuma casus transcriptomics
+Reuma casus Transcriptomics
+
+## Inleiding
+
+
+## Methode
+
+
+
+## Resultaten
+
+
+
+## Conclusie
+
+
+
+## Referenties
