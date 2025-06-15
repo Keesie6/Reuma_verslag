@@ -1,9 +1,9 @@
 # Reuma_2.0
 Auteur: Keshari Autar (5374308)
-Klas: BM2B
-Opleiding: Biologie en medisch laboratoriumonderzoek
-Begeleider: Dewi van den Bergh
-Datum: 20 - 06 - 2025
+  |  Klas: BM2B
+  |  Opleiding: Biologie en medisch laboratoriumonderzoek
+  |  Begeleider: Dewi van den Bergh
+  |  Datum: 20 - 06 - 2025
 
 ## Inleiding
 De auto-immuunziekte reuma, oftewel reumatoïde artritis (RA), is een chronische ontstekingsreactie waarbij het afweersysteem de eigen gewrichten aanvalt. Dit leidt tot pijn, zwelling en stijfheid, vaak aan beide kanten van het lichaam wat op den duur schade kan veroorzaken aan het kraakbeen, bot en andere weefsels. Daarnaast kunnen cardiovasculaire aandoeningen versneld ontwikkelen zoals hartfalen, reumatoïde noduli en pericarditis. RA gepaard met een cardiovasculaire ziekte zorgt voor een hoge morbiditeit. (Sanghavi et al., 2022)
