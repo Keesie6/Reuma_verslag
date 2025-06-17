@@ -23,7 +23,7 @@ Uit de RNA-seq analyse werden in totaal 4572 genen geïdentificeerd die signific
 
 De [GO-analyse](https://github.com/Keesie6/Reuma_2.0/blob/main/plaatjes/Enriched_Go_Terms.png) gaf een top 10 Enriched GO-termen welke betrokken waren bij bepaalde processen in het lichaam. Deze analyse liet zien dat een groot aantal van deze genen vooral te maken hadden met de afweerreactie, cytokines en ontstekingen. 
 
-De **![KEGG pathway-analyse](HIER MOET EEN PLAATJE MAAR MN PATHWAY GEEFT STEEDS ERROR 404)** liet zien welke genen in de Rheumatoid Arthritis pathway verhoogd (rood) of verlaagd (groen) tot expressie kwamen op basis van log2FoldChange-waarden.  
+De [KEGG pathway-analyse](https://github.com/Keesie6/Reuma_2.0/blob/main/plaatjes/hsa05323.pathview.png) liet zien welke genen in de Rheumatoid Arthritis pathway verhoogd (rood) of verlaagd (groen) tot expressie kwamen op basis van log2FoldChange-waarden.  
 De BAFF receptor, ofwel BLYS receptor, wordt gecodeerd door het gen TNFRSF13C en draagt samen met de cytokine APRIL bij aan de overleving en proliferatie van B-cellen. (Smulski & Eibel, 2018). Anti-citrullinated protein antibodies (APCA) zijn specifieke antilichamen tegen gecitrullineerde eiwitten en fungeren als vroegtijdige biomarker voor ernstige RA (Tsaltskan & Firestein, 2022). Een ontstekingsreactie stimuleert B-cellen tot de aanmaak van APCA’s zoals IgG wat in het rood omcirkeld staat in de pathway (Smulski & Eibel, 2018).
 
 ## Conclusie
@@ -31,7 +31,7 @@ Op basis van de resultaten van dit onderzoek kan er worden vastgesteld dat er gr
 
 In totaal zijn er meer dan 4500 genen gevonden die significant meer of minder actief zijn bij RA. Veel van deze genen zijn betrokken bij het afweersysteem en ontstekingsreacties. Uit de GO-analyse is gebleken dat er een aantal processen waaronder de immuunrespons en de cytokine-activiteit vaker voorkwamen bij de genexpressie van reuma patiënten. Dit wijst erop dat het immuunsysteem op een andere manier werkt dan bij gezonde mensen. 
 
-Daarnaast liet de KEGG-analyse zien dat het RA-pathway (hsa05323) genen bevatte die verschillend tot expressie komen bij patiënten met reuma. Deze genen kunnen dus potentieel betrokken zijn bij het ziekteproces en dragen mogelijk bij aan reumatische klachten en ontstekingen veroorzaakt door reuma. 
+Daarnaast liet de KEGG pathway-analyse zien dat het RA-pathway (hsa05323) genen bevatte die verschillend tot expressie komen bij patiënten met reuma. Deze genen kunnen dus potentieel betrokken zijn bij het ziekteproces en dragen mogelijk bij aan reumatische klachten en ontstekingen veroorzaakt door reuma. 
 
 Concluderend, RA is een ontstekingsziekte is op moleculair niveau waarbij het eigen afweersysteem een grote rol speelt. Deze resultaten geven meer inzicht in hoe RA werkt en kunnen in de toekomst helpen bij het vinden van nieuwe medicijnen of biomarkers.
 
