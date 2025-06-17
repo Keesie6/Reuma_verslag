@@ -1,7 +1,7 @@
 # Project transcriptomics: reuma RNA analyse 
 
 <p align="center">
-  <img src="plaatjes/Reuma plaatje.png" alt="Reuma" width="550" />
+  <img src="plaatjes/Reuma plaatje.png" alt="Reuma (niFGo, z.d.)" width="550" />
 </p>
 
 Auteur: Keshari Autar (5374308)
@@ -38,7 +38,7 @@ In totaal zijn er 4572 genen gevonden die significant meer of minder actief zijn
 
 Daarnaast liet de KEGG pathway-analyse zien dat het RA-pathway (hsa05323) genen bevatte die verschillend tot expressie komen bij patiënten met reuma. Deze genen kunnen dus potentieel betrokken zijn bij het ziekteproces en dragen mogelijk bij aan reumatische klachten en ontstekingen veroorzaakt door reuma. 
 
-Concluderend, RA is een ontstekingsziekte is op moleculair niveau waarbij het eigen afweersysteem een grote rol speelt. Deze resultaten geven meer inzicht in hoe RA werkt en kunnen in de toekomst helpen bij het vinden van nieuwe medicijnen of biomarkers. 
+Concluderend, RA is een ontstekingsziekte is op moleculair niveau waarbij het eigen afweersysteem een grote rol speelt. Deze resultaten geven meer inzicht in hoe RA werkt en kunnen in de toekomst helpen bij het vinden van nieuwe medicijnen of biomarkers. Als vervolgonderzoek kan onderzocht worden of eiwitten zoals BLYS en APCA’s biomarkers zijn voor RA, door genexpressie en eiwitniveaus in bloed van patiënten en controles te meten (RT-qPCR/ELISA) en deze te koppelen aan ziekteverloop en klachten.
 
 ## Referenties
 ![Referenties](https://github.com/Keesie6/Reuma_2.0/blob/main/Referenties%26script/Referenties%20Reuma%20PDF.pdf)
