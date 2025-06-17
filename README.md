@@ -1,4 +1,9 @@
-# Reuma_2.0
+# Project transcriptomics: reuma RNA analyse 
+
+<p align="center">
+  <img src="plaatjes/Reuma plaatje.png" alt="Reuma" width="550" />
+</p>
+
 Auteur: Keshari Autar (5374308)
   |  Klas: BM2B
   |  Opleiding: Biologie en medisch laboratoriumonderzoek
