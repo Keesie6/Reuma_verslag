@@ -8,7 +8,7 @@ Auteur: Keshari Autar (5374308)
   |  Klas: BM2B
   |  Opleiding: Biologie en medisch laboratoriumonderzoek
   |  Begeleider: Dewi van den Bergh
-  |  Datum: 20 - 06 - 2025
+  |  Datum: 21 - 06 - 2025
 
 ## Inleiding
 De auto-immuunziekte reumatoïde artritis (RA) is een chronische ontstekingsreactie waarbij het afweersysteem de eigen gewrichten aanvalt. Naast klachten als pijn, zwelling en stijfheid kan het ook schade brengen aan andere lichaamsweefsels. Cardiovasculaire aandoeningen kunnen  versneld ontwikkelen zoals hartfalen en reumatoïde noduli wat zorgt voor een hoge morbiditeit (Sanghavi et al., 2022). Verhoogde niveaus van cytokines als TNF- α en IL-6 kunnen bij onderzoek een indicatie zijn van reuma in een patiënt (Díaz-González & Hernández-Hernández, 2023). Klachten worden vaak onderdrukt met anti-reumatische middelen zoals methotrexaat (MTX) wat de proliferatie van RA-gerelateerde ontstekingscellen remt via het folaatantagonismepad (Zhao et al., 2022). Reuma heeft een genetische basis, maar leefstijl en roken kunnen het ziekteproces versnellen. Hoewel er een aantal behandeltherapiëen beschikbaar zijn, reageren nog veel patiënten niet goed op de behandeling (Smolen et al., 2016). 
@@ -32,7 +32,7 @@ Op basis van de resultaten van dit onderzoek kan er worden vastgesteld dat er gr
 Daarnaast liet de KEGG pathway-analyse zien dat het RA-pathway (hsa05323) genen bevatte die verschillend tot expressie komen bij patiënten met reuma zoals  de toll like signaling pathway. Dit wijst erop dat deze genen mogelijk betrokken zijn bij RA. Als vervolgonderzoek kan onderzocht worden of eiwitten zoals BLYS en APCA’s biomarkers zijn voor RA, door genexpressie en eiwitniveaus in bloed van patiënten en controles te meten (RT-qPCR/ELISA) en deze te koppelen aan ziekteverloop en klachten.
 
 ## Referenties
-![Referenties](https://github.com/Keesie6/Reuma_2.0/blob/main/Referenties%26script/Referenties%20reuma.pdf)
+![Referenties](https://github.com/Keesie6/Reuma_2.0/blob/main/Referenties%26script/Referenties%20Reuma%201.pdf)
 
 ## Data Stewardship
 [Beheren](https://github.com/Keesie6/Reuma_2.0/blob/main/Datastewardship/Beheren) en 
