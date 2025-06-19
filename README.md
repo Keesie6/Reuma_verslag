@@ -11,7 +11,7 @@ Auteur: Keshari Autar (5374308)
   |  Datum: 20 - 06 - 2025
 
 ## Inleiding
-De auto-immuunziekte reumatoïde artritis (RA) is een chronische ontstekingsreactie waarbij het afweersysteem de eigen gewrichten aanvalt. Dit leidt tot pijn, zwelling en stijfheid, vaak aan beide kanten van het lichaam wat op den duur schade kan veroorzaken aan het kraakbeen, bot en andere weefsels. Daarnaast kunnen cardiovasculaire aandoeningen versneld ontwikkelen zoals hartfalen, reumatoïde noduli en pericarditis. RA gepaard met een cardiovasculaire ziekte zorgt voor een hoge morbiditeit (Sanghavi et al., 2022).
+De auto-immuunziekte reumatoïde artritis (RA) is een chronische ontstekingsreactie waarbij het afweersysteem de eigen gewrichten aanvalt. Dit leidt tot pijn, zwelling en stijfheid, vaak aan beide kanten van het lichaam wat schade kan brengen aan het kraakbeen, bot en andere weefsels. Daarnaast kunnen cardiovasculaire aandoeningen versneld ontwikkelen zoals hartfalen, reumatoïde noduli en pericarditis wat zorgt voor een hoge morbiditeit (Sanghavi et al., 2022).
 Verhoogde niveaus van TNF- α en IL-6, twee cytokines die vooral opspelen tijdens ontstekingsreacties, kunnen bij onderzoek een indicatie zijn van reuma in een patiënt. Zonder behandeling kan RA leiden tot blijvende beperkingen en een kortere levensverwachting (Díaz-González & Hernández-Hernández, 2023).
 
 Een geneesmiddel is nog niet gevonden, maar klachten worden vaak onderdrukt met anti-reumatische middelen zoals methotrexaat (MTX) wat de proliferatie van RA-gerelateerde ontstekingscellen remt via het folaatantagonismepad. MTX werkt een ontstekingsremmende werking uit op verschillende pathways, zoals het adenosine-signaalpad (Zhao et al., 2022).
