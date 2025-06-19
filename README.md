@@ -1,4 +1,4 @@
-# Genexpressieanalyse bij reumatoïde arthritis: inzicht in immuunprocessen en potentiële biomarkers
+# Genexpressieanalyse van reumatoïde arthritis: inzicht in immuunprocessen en potentiële biomarkers
 
 <p align="center">
   <img src="Afbeelding/Reuma plaatje.png" alt="Reuma (niFGo, z.d.)" width="550" />
