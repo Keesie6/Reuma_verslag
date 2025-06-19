@@ -45,4 +45,4 @@ Concluderend, RA is een ontstekingsziekte is op moleculair niveau waarbij het ei
 
 ## Data Stewardship
 [Beheren](https://github.com/Keesie6/Reuma_2.0/blob/main/Datastewardship/Beheren)
-[GitHub](
+[GitHub](https://github.com/Keesie6/Reuma_2.0/blob/main/Datastewardship/GitHub)
