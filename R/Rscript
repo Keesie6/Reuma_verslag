@@ -1,1 +1,229 @@
+library(Rsubread)
+library(BiocManager)
+library(Rsamtools)
+library(dplyr)
 
+buildindex(
+basename = 'ref_Human',
+reference = '/Users/keshariautar/Desktop/Reuma/Human/Human.fa.gz/',
+memory = 4000,
+indexSplit = TRUE)
+
+align(index = "ref_Human", readfile1 = "SRR4785819_1_subset40k.fastq", readfile2 = "SRR4785819_2_subset40k.fastq", output_file = "SRR4785819.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785820_1_subset40k.fastq", readfile2 = "SRR4785820_2_subset40k.fastq", output_file = "SRR4785820.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785828_1_subset40k.fastq", readfile2 = "SRR4785828_2_subset40k.fastq", output_file = "SRR4785828.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785831_1_subset40k.fastq", readfile2 = "SRR4785831_2_subset40k.fastq", output_file = "SRR4785831.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785979_1_subset40k.fastq", readfile2 = "SRR4785979_2_subset40k.fastq", output_file = "SRR4785979.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785980_1_subset40k.fastq", readfile2 = "SRR4785980_2_subset40k.fastq", output_file = "SRR4785980.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785986_1_subset40k.fastq", readfile2 = "SRR4785986_2_subset40k.fastq", output_file = "SRR4785986.BAM")
+align(index = "ref_Human", readfile1 = "SRR4785988_1_subset40k.fastq", readfile2 = "SRR4785988_2_subset40k.fastq", output_file = "SRR4785988.BAM")
+
+file.exists("SRR4785828.BAM")
+TRUE
+
+allsamples <- c("SRR4785819.BAM", "SRR4785820.BAM", "SRR4785828.BAM", "SRR4785831.BAM", "SRR4785979.BAM", "SRR4785980.BAM", "SRR4785986.BAM", "SRR4785988.BAM")
+
+count_matrix <- featureCounts(
+  files = allsamples,
+  annot.ext = ".GRCh38.114.gtf.gz",
+  isPairedEnd = TRUE,
+  isGTFAnnotationFile = TRUE,
+  GTF.attrType = "gene_id",
+  useMetaFeatures = TRUE
+)
+
+count_matrix <- read.table("count_matrix.txt", row.names = 1)
+write.csv(count_matrix, file = "count_matrix_goodrownames.csv")
+count_matrix <- read.csv("count_matrix_goodrownames.csv", row.names = 1)
+
+diagnostics <- c("normal", "normal", "normal", "normal", "reuma", "reuma", "reuma", "reuma" )
+diagnostics_table <- data.frame(diagnostics)
+rownames(diagnostics_table) <- c('SRR4785819', 'SRR4785820', 'SRR4785828', 'SRR4785831', 'SRR4785979', 'SRR4785980', 'SRR4785986', 'SRR4785988')
+BiocManager::install("DESeq2")
+library(DESeq2)
+
+dds <- DESeqDataSetFromMatrix(countData = round(count_matrix),
+                              colData = diagnostics_table,                         design = ~ diagnostics)
+dds <- DESeq(dds)
+resultaten <- results(dds)
+resultaten <- as.data.frame(resultaten)
+
+write.csv(resultaten, file = 'ResultatenReumaDds.csv')
+resultaten <- read.csv("ResultatenReumaDds.csv", row.names = 1)
+
+sum(resultaten$padj < 0.05 & resultaten$log2FoldChange > 1, na.rm = TRUE)
+2085
+#2085 aantal
+
+sum(resultaten$padj < 0.05 & resultaten$log2FoldChange < -1, na.rm = TRUE)
+2487
+#2487 aantal
+
+hoogste_fold_change <- resultaten[order(resultaten$log2FoldChange, decreasing = TRUE), ]
+laagste_fold_change <- resultaten[order(resultaten$log2FoldChange, decreasing = FALSE), ]
+laagste_p_waarde <- resultaten[order(resultaten$padj, decreasing = FALSE), ]
+all <- rownames(resultaten)
+
+resultaten <- as.data.frame(resultaten)
+resultaten_filtered <- resultaten %>%
+  filter(padj < 0.05, log2FoldChange < -2 | log2FoldChange > 2)
+DEG <- rownames(resultaten_filtered)
+
+gene.vector=as.integer(all%in%DEG)
+names(gene.vector)=all 
+head(gene.vector)
+tail(gene.vector)
+gene.vector
+pwf=nullp(gene.vector,"hg19","geneSymbol")
+
+BiocManager::install("KEGGREST")
+library(KEGGREST)
+
+BiocManager::install(c(
+  "GO.db",
+  "goseq",
+  "geneLenDataBase",
+  "org.Dm.eg.db",   # Drosophila
+  "org.Hs.eg.db"    # Mens
+))
+
+library(GO.db)
+library(goseq)
+library(geneLenDataBase)
+library(org.Dm.eg.db)
+library(org.Hs.eg.db)
+
+gene.vector=as.integer(all%in%DEG)
+names(gene.vector)=all 
+#lets explore this new vector a bit
+head(gene.vector)
+tail(gene.vector)
+gene.vector
+pwf=nullp(gene.vector,"hg19","geneSymbol")
+
+GO.wall=goseq(pwf,"hg19","geneSymbol")
+
+class(GO.wall)
+head(GO.wall)
+nrow(GO.wall)
+
+enriched.GO=GO.wall$category[GO.wall$over_represented_pvalue<.05]
+
+class(enriched.GO)
+head(enriched.GO)
+length(enriched.GO)
+
+capture.output(for(go in enriched.GO[1:258]) { print(GOTERM[[go]])
+  cat("--------------------------------------\n")
+}
+, file="SigGo.txt")
+
+write.csv(GO.wall, "pathways.csv")
+GO.wall <- read.csv("pathways.csv", row.names = 1)
+
+top10_GO <- GO.wall %>%
+  filter(over_represented_pvalue < 0.05) %>%
+  arrange(over_represented_pvalue) %>%
+  slice_head(n = 10)
+
+top10_GO$term <- sapply(top10_GO$category, function(go_id) {
+  term <- Term(GOTERM[[go_id]])
+  if (is.null(term)) return(NA)
+  else return(term)
+})
+
+install.packages("ggplot.2")
+BiocManager::install("pathview")
+BiocManager::install("EnhancedVolcano")
+library(ggplot2)
+library(pathview)
+library(EnhancedVolcano)
+
+ggplot(top10_GO, aes(x = reorder(term, -log10(over_represented_pvalue)),
+                     y = -log10(over_represented_pvalue))) +
+  geom_bar(stat = "identity", fill = "purple") +
+  coord_flip() +
+  labs(title = "Top 10 Enriched GO Terms",
+       x = "GO Term",
+       y = "-log10(P-value)") +
+  theme_minimal()
+
+if (!requireNamespace("EnhancedVolcano", quietly = TRUE)) 
+
+  EnhancedVolcano(resultaten,
+                  lab = rownames(resultaten),
+                  x = 'log2FoldChange',
+                  y = 'padj')
+
+EnhancedVolcano(resultaten,
+                lab = rownames(resultaten),
+                x = 'log2FoldChange',
+                y = 'padj',
+                pCutoff = 0)
+#KEGG Pathway-analyse
+resultaten[1] <- NULL
+resultaten[2:5] <- NULL
+
+human_pathways <- keggList("pathway", "hsa")
+#hsa05323: 	Rheumatoid arthritis
+
+pathview(
+  gene.data = resultaten,
+  pathway.id = "hsa05323",  # KEGG ID voor Biofilm formation – E. coli
+  species = "hsa",          # 'hsa' = human in KEGG
+  gene.idtype = "SYMBOL",     # Geef aan dat het KEGG-ID's zijn
+  limit = list(gene = 5)    # Kleurbereik voor log2FC van -5 tot +5
+)
+
+package.version("Rsubread")
+package.version("Rsamtools")
+package.version("BiocManager")
+package.version("KEGGREST")
+package.version("pathview")
+package.version("ggplot2")
+package.version("EnhancedVolcano")
+package.version("GO.db")
+package.version("goseq")
+package.version("geneLenDataBase")
+package.version("org.Dm.eg.db")
+package.version("org.Hs.eg.db")
+package.version("DESeq2")
+
+package.version("Rsubread")
+"2.20.0"
+
+package.version("Rsamtools")
+"2.22.0"
+
+package.version("BiocManager")
+"1.30.26"
+
+package.version("KEGGREST")
+"1.46.0"
+
+package.version("pathview")
+"1.46.0"
+
+package.version("ggplot2")
+"3.5.2"
+
+package.version("EnhancedVolcano")
+"1.24.0"
+
+package.version("GO.db")
+"3.20.0"
+
+package.version("goseq")
+"1.58.0"
+
+package.version("geneLenDataBase")
+"1.42.0"
+
+package.version("org.Dm.eg.db")
+"3.20.0"
+
+package.version("org.Hs.eg.db")
+"3.20.0"
+
+package.version("Rsubread")
+"2.20.0"
