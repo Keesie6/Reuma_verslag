@@ -1,14 +1,17 @@
+#packages laden voor de analyse
 library(Rsubread)
 library(BiocManager)
 library(Rsamtools)
 library(dplyr)
 
+#index maken van het humane genoom
 buildindex(
 basename = 'ref_Human',
 reference = '/Users/keshariautar/Desktop/Reuma/Human/Human.fa.gz/',
 memory = 4000,
 indexSplit = TRUE)
 
+#alignen van de 8 RNA-samples FASTQ-files aan het humane genoom
 align(index = "ref_Human", readfile1 = "SRR4785819_1_subset40k.fastq", readfile2 = "SRR4785819_2_subset40k.fastq", output_file = "SRR4785819.BAM")
 align(index = "ref_Human", readfile1 = "SRR4785820_1_subset40k.fastq", readfile2 = "SRR4785820_2_subset40k.fastq", output_file = "SRR4785820.BAM")
 align(index = "ref_Human", readfile1 = "SRR4785828_1_subset40k.fastq", readfile2 = "SRR4785828_2_subset40k.fastq", output_file = "SRR4785828.BAM")
@@ -21,8 +24,10 @@ align(index = "ref_Human", readfile1 = "SRR4785988_1_subset40k.fastq", readfile2
 file.exists("SRR4785828.BAM")
 TRUE
 
+#alle BAM-files verzamelen voor de telling
 allsamples <- c("SRR4785819.BAM", "SRR4785820.BAM", "SRR4785828.BAM", "SRR4785831.BAM", "SRR4785979.BAM", "SRR4785980.BAM", "SRR4785986.BAM", "SRR4785988.BAM")
 
+#matrix maken voor de telling met de count matrix
 count_matrix <- featureCounts(
   files = allsamples,
   annot.ext = ".GRCh38.114.gtf.gz",
@@ -32,16 +37,19 @@ count_matrix <- featureCounts(
   useMetaFeatures = TRUE
 )
 
+#de count matrix opslaan en opnieuw inlezen
 count_matrix <- read.table("count_matrix.txt", row.names = 1)
 write.csv(count_matrix, file = "count_matrix_goodrownames.csv")
 count_matrix <- read.csv("count_matrix_goodrownames.csv", row.names = 1)
 
+#diagnoses per sample toevoegen, 4 normaal en 4 reuma
 diagnostics <- c("normal", "normal", "normal", "normal", "reuma", "reuma", "reuma", "reuma" )
 diagnostics_table <- data.frame(diagnostics)
 rownames(diagnostics_table) <- c('SRR4785819', 'SRR4785820', 'SRR4785828', 'SRR4785831', 'SRR4785979', 'SRR4785980', 'SRR4785986', 'SRR4785988')
 BiocManager::install("DESeq2")
 library(DESeq2)
 
+#analyseren en berekenen welke genen significant verschillend genexpressie vertonen tussen reuma en controle
 dds <- DESeqDataSetFromMatrix(countData = round(count_matrix),
                               colData = diagnostics_table,                         design = ~ diagnostics)
 dds <- DESeq(dds)
@@ -51,6 +59,7 @@ resultaten <- as.data.frame(resultaten)
 write.csv(resultaten, file = 'ResultatenReumaDds.csv')
 resultaten <- read.csv("ResultatenReumaDds.csv", row.names = 1)
 
+#Berekent hoeveel genen verhoogd/verlaagd zijn met p <0.05 en log2FC > 2 of < -2
 sum(resultaten$padj < 0.05 & resultaten$log2FoldChange > 1, na.rm = TRUE)
 2085
 #2085 aantal
@@ -69,8 +78,10 @@ resultaten_filtered <- resultaten %>%
   filter(padj < 0.05, log2FoldChange < -2 | log2FoldChange > 2)
 DEG <- rownames(resultaten_filtered)
 
+#verrijkingsanalyse: welke processen significante genexpressie vertonen
 gene.vector=as.integer(all%in%DEG)
 names(gene.vector)=all 
+#lets explore this new vector a bit
 head(gene.vector)
 tail(gene.vector)
 gene.vector
@@ -86,7 +97,6 @@ BiocManager::install(c(
   "org.Dm.eg.db",   # Drosophila
   "org.Hs.eg.db"    # Mens
 ))
-
 library(GO.db)
 library(goseq)
 library(geneLenDataBase)
@@ -101,6 +111,7 @@ tail(gene.vector)
 gene.vector
 pwf=nullp(gene.vector,"hg19","geneSymbol")
 
+#uitvoeren van de GO-analyse en identificatie van oververtegenwoordigde processen
 GO.wall=goseq(pwf,"hg19","geneSymbol")
 
 class(GO.wall)
@@ -118,6 +129,7 @@ capture.output(for(go in enriched.GO[1:258]) { print(GOTERM[[go]])
 }
 , file="SigGo.txt")
 
+#GO-analyse exporteren en de top 10 processen in een staafdiagram visualiseren
 write.csv(GO.wall, "pathways.csv")
 GO.wall <- read.csv("pathways.csv", row.names = 1)
 
@@ -150,6 +162,7 @@ ggplot(top10_GO, aes(x = reorder(term, -log10(over_represented_pvalue)),
 
 if (!requireNamespace("EnhancedVolcano", quietly = TRUE)) 
 
+#visualisatie van alle genen in een vulkaanplot o.b.v. log2foldchange en p-waarde
   EnhancedVolcano(resultaten,
                   lab = rownames(resultaten),
                   x = 'log2FoldChange',
@@ -167,6 +180,7 @@ resultaten[2:5] <- NULL
 human_pathways <- keggList("pathway", "hsa")
 #hsa05323: 	Rheumatoid arthritis
 
+#weergeven van de verhoogde/verlaagde genexpressie in de KEGG rheumatoid arthritis
 pathview(
   gene.data = resultaten,
   pathway.id = "hsa05323",  # KEGG ID voor Biofilm formation – E. coli
@@ -174,56 +188,3 @@ pathview(
   gene.idtype = "SYMBOL",     # Geef aan dat het KEGG-ID's zijn
   limit = list(gene = 5)    # Kleurbereik voor log2FC van -5 tot +5
 )
-
-package.version("Rsubread")
-package.version("Rsamtools")
-package.version("BiocManager")
-package.version("KEGGREST")
-package.version("pathview")
-package.version("ggplot2")
-package.version("EnhancedVolcano")
-package.version("GO.db")
-package.version("goseq")
-package.version("geneLenDataBase")
-package.version("org.Dm.eg.db")
-package.version("org.Hs.eg.db")
-package.version("DESeq2")
-
-package.version("Rsubread")
-"2.20.0"
-
-package.version("Rsamtools")
-"2.22.0"
-
-package.version("BiocManager")
-"1.30.26"
-
-package.version("KEGGREST")
-"1.46.0"
-
-package.version("pathview")
-"1.46.0"
-
-package.version("ggplot2")
-"3.5.2"
-
-package.version("EnhancedVolcano")
-"1.24.0"
-
-package.version("GO.db")
-"3.20.0"
-
-package.version("goseq")
-"1.58.0"
-
-package.version("geneLenDataBase")
-"1.42.0"
-
-package.version("org.Dm.eg.db")
-"3.20.0"
-
-package.version("org.Hs.eg.db")
-"3.20.0"
-
-package.version("Rsubread")
-"2.20.0"
