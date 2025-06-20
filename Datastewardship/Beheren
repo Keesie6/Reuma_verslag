@@ -1,15 +1,22 @@
-Uitleg over een efficiënte en gestructureerde manier van beheren.
+Een goede structuur van data is belangrijk voor het behouden van overzicht, reproduceerbaarheid en
+eventuele samenwerking binnen een onderzoek. Door het duidelijk en slim benoemen van mappen, deze op 
+een logische plek te ordenen en gebruik te maken van hyperlinks in de Readme, blijft alle informatie 
+snel vindbaar. 
 
-Enkele hulpvragen staan hieronder weergeven. Dit zijn enkele voorbeelden om te schetsen wat er van je verwacht wordt. 
-Denk dus ook zelf goed na over het beheren van data, het belang hiervan en hoe je dat vorm kunt geven!
+Om de data te analyseren, is er gebruik gemaakt van Rstudio. In GitHub is het erg makkelijk om een 
+Rscript te delen en de lezer een snelle overview te bieden tijdens het lezen van een onderzoek zonder 
+dat de lezer daarvoor speciaal R moet downloaden of openen. Er kunnen in het script ook opmerkingen 
+staan die verdere toelichting geven over bepaalde stappen die gedaan worden. Dit maakt
+GitHub in combinatie met Rstudio voor de lezer erg makkelijk in gebruik, omdat er geen extra stappen
+aan verbonden zitten voordat het onderzoek kan worden gelezen.
 
-Waarom is dit een belangrijk onderdeel van onderzoek doen?
-Wat is een duidelijke mappenstructuur en waarom houd je dat aan?
-Wat is een handige manier voor de naamgeving van bestanden en waarom?
-Wat houdt versiebeheer in en waarom doe je dit?
-Hoe zorg je voor goede documentatie in scripts?
-Wat voor platforms kan je gebruiken om scripts te delen?
-Welke tools gebruik je voor data-analyse, zoals bijvoorbeeld voor het veilig opslaan van data?
-Hoe zou je omgaan met gevoelige of persoonlijke data?
-Wat is het belang van open data en het publiceren van datasets?
+GitHub doet aan versiebeheer wat essentieel is voor het bijhouden van wijzigingen en voorkomt dat werk 
+verloren gaat. Voor het reproduceren van een onderzoek is het van belang dat het onderzoek met de 
+data op Github openstaat, maar dit kan privé worden gemaakt volgends de richtlijnen en privacywetten 
+(bv. AVG). Data wordt anoniem en veilig bewaard, zo is bijvoorbeeld persoonlijke data niet voor 
+iedereen meer zichtbaar. 
 
+Concluderend, GitHub geeft op overzichtelijke wijze informatie over een bepaald onderzoek en is 
+belangrijke informatie makkelijk te vinden door gestructureerde en logische ordening en benamingen 
+van mapjes. Daarnaast hoeven er geen extra tools gedownload te worden en door het openzetten van de 
+GitHub pagina wordt het onderzoek reproduceerbaar. 
