@@ -1,4 +1,4 @@
-# Genexpressieanalyse van reumatoïde arthritis: inzicht in immuunprocessen en potentiële biomarkers
+# Genexpressieanalyse van reumatoïde arthritis in Rstudio: inzicht in immuunprocessen en potentiële biomarkers
 
 <p align="center">
   <img src="Referenties/Reuma plaatje.png" alt="Reuma" width="550" />
