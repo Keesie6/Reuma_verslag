@@ -1,11 +1,21 @@
-Uitleg over hoe je GitHub hebt gebruikt.
+In GitHub is binnen een aangemaakte repository alle informatie rondom het onderzoek overzichtelijk gestructureerd. 
+Er zijn duidelijke kopjes per onderdeel gemaakt zodat de lezer een indicatie heeft wat er besproken zal worden. 
+De ondersteunende informatie en data staan in de Readme als hyperlink zodat de lezer geen hinder ondervindt met
+bepaalde info terugvinden, daarnaast is dit overzichtelijk en op alfabetische volgorde gerangschikt in 
+verschillende mapjes: 
+- Afbeelding
+- Data
+- Datastewardship
+- R 
+- Referenties
+Door het gebruik van mapjes, hyperlinkjes en kopjes kan de lezer makkelijk navigeren tussen verschillende 
+stukken informatie met de ondersteunende informatie en bijbehorende data. 
 
-Je voert een project uit waarbij je als data steward projectgegevens beheert. Leg uit hoe je dat hebt gedaan met behulp van GitHub. 
-Maak duidelijk hoe jouw pagina bijdraagt aan reproduceerbaarheid van je data. Kan je bijvoorbeeld alles makkelijk terugvinden? 
-Is het makkelijk te gebruiken als iemand anders dit onderzoek gaat uitvoeren met behulp van jouw GitHub pagina? 
-Hoe heb je gezorgd voor een duidelijke structuur? Hoe heb je gewerkt aan versiebeheer? 
-Dit zijn enkele voorbeeldvragen om een beeld te schetsen.
+Om het onderzoek reproduceerbaar te maken, is het linkje voor het humane genoom, het ruwe RNA-seq van acht 
+patiënten en de bijbehorende count matrix gelinkt in de Readme. 
+Daarnaast staan de gebruikte packages met bijbehorende versies in de methode en in het script. 
 
-In GitHub heb ik een repository aangemaakt waarin mijn hele onderzoek instaat. Qua indeling is het vergelijkbaar met een website waarop je kan shoppen.
-Ik heb de data, datastewardship, referenties, script, samples en de afbeelding op de front page een eigen map gegeven zodat alles makkelijk te vinden is en er onderscheid wordt gemaakt tussen de informatie in de Readme. 
-Daarnaast heb ik het 
+GitHub is een ideale omgeving waarbij beheren, documenteren en het delen van onderzoeksprojecten voorop staan. 
+Dankzij de combinatie van een duidelijke structuur, transparantie en versiebeheer is GitHub voor iedereen een 
+manier om onderzoeken te delen, makkelijk terug te vinden en is het goed reproduceerbaar. 
+
