@@ -1,7 +1,7 @@
 # Genexpressieanalyse van reumatoïde arthritis: inzicht in immuunprocessen en potentiële biomarkers
 
 <p align="center">
-  <img src="Afbeelding/Reuma plaatje.png" alt="Reuma" width="550" />
+  <img src="Referenties/Reuma plaatje.png" alt="Reuma" width="550" />
 </p>
 
 Auteur: Keshari Autar (5374308)
